@@ -26,13 +26,9 @@ const app = express();
 
 app.use(cors({
     origin: "https://sociopedia-1-tr2c.onrender.com",
-    credentials: true
+    credentials: true,
+    methods: ['GET', 'POST', 'PATCH', 'DELETE']
   }));
-
-app.use(cors({
-    origin: allowedOrigins,
-    methods: ['GET', 'POST', 'PATCH', 'DELETE'], // Allowed methods
-}));
 
 app.use(express.json());
 app.use(helmet());
