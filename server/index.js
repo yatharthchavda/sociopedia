@@ -25,7 +25,8 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-    origin: "https://your-frontend-url.onrender.com", // Frontend URL from Render
+    origin: "https://sociopedia-1-tr2c.onrender.com",
+    credentials: true
   }));
 
 app.use(express.json());
