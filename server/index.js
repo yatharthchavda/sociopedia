@@ -29,6 +29,11 @@ app.use(cors({
     credentials: true
   }));
 
+app.use(cors({
+    origin: allowedOrigins,
+    methods: ['GET', 'POST', 'PATCH', 'DELETE'], // Allowed methods
+}));
+
 app.use(express.json());
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: 'cross-origin' }));
