@@ -14,17 +14,16 @@ const ProfilePage = () => {
     const token = useSelector((state) => state.token);
     const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
 
-    const getUser = async () => {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/users/${userId}`, {
-            method: "GET",
-            headers: { Authorization: `Bearer ${token}` },
-        });
-        const data = await response.json();
-        setUser(data);
-    };
+    // const getUser = async () => {
+    //     const response = await fetch(`${process.env.REACT_APP_API_URL}/users/${userId}`, {
+    //         method: "GET",
+    //         headers: { Authorization: `Bearer ${token}` },
+    //     });
+    //     const data = await response.json();
+    //     setUser(data);
+    // };
 
-    useEffect(() => {
-        const getUser = async () => {
+    const getUser = async () => {
             try {
                 console.log("Fetching user...");
                 const response = await fetch(`${process.env.REACT_APP_API_URL}/users/${userId}`, {
@@ -38,12 +37,13 @@ const ProfilePage = () => {
                 console.error("Failed to fetch user:", error);
             }
         };
-    
+
+    useEffect(() => {
         getUser();
     }, []);
      // eslint-disable-line react-hooks/exhaustive-deps
 
-    if (!user) return <div>Loading...</div>;
+    if (!user) return null;
 
     return (
         <Box>
