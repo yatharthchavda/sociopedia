@@ -1,14 +1,13 @@
 import {
-    ChatBubbleOutlineOutlined,
+    // ChatBubbleOutlineOutlined,
     FavoriteBorderOutlined,
     FavoriteOutlined,
-    ShareOutlined,
+    // ShareOutlined,
 } from "@mui/icons-material";
-import { Box, Divider, IconButton, Typography, useTheme } from "@mui/material";
+import {  IconButton, Typography, useTheme } from "@mui/material";
 import FlexBetween from "components/FlexBetween";
 import Friend from "components/Friend";
 import WidgetWrapper from "components/WidgetWrapper";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPost } from "state";
 
@@ -23,7 +22,7 @@ const PostWidget = ({
     likes,
     comments,
 }) => {
-    const [isComments, setIsComments] = useState(false);
+    // const [isComments, setIsComments] = useState(false);
     const dispatch = useDispatch();
     const token = useSelector((state) => state.token);
     const loggedInUserId = useSelector((state) => state.user._id);
@@ -82,20 +81,20 @@ const PostWidget = ({
                         <Typography>{likeCount}</Typography>
                     </FlexBetween>
 
-                    {/* comment section */}
+                    {/* comment section
                     <FlexBetween gap="0.3rem">
                         <IconButton onClick={() => setIsComments(!isComments)}>
                             <ChatBubbleOutlineOutlined />
                         </IconButton>
                         <Typography>{comments ? comments.length : 0}</Typography>
-                    </FlexBetween>
+                    </FlexBetween> */}
                 </FlexBetween>
 
-                <IconButton>
+                {/* <IconButton>
                     <ShareOutlined />
-                </IconButton>
+                </IconButton> */}
             </FlexBetween>
-            {isComments && comments && (
+            {/* {isComments && comments && (
                 <Box mt="0.5rem">
                     {comments.map((comment, i) => (
                         <Box key={`${name}-${i}`}>
@@ -107,7 +106,7 @@ const PostWidget = ({
                     ))}
                     <Divider />
                 </Box>
-            )}
+            )} */}
 
         </WidgetWrapper>
     );

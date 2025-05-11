@@ -35,7 +35,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
         const data = await response.json();
         console.log("Updated friends list:", data); // ← add this
         dispatch(setFriends({ friends: data }));
-    };    
+    };
 
     return (
         <FlexBetween>
@@ -65,16 +65,19 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
                     </Typography>
                 </Box>
             </FlexBetween>
-            <IconButton
-                onClick={() => patchFriend()}
-                sx={{ backgroundColor: primaryLight, p: "0.6rem" }}
-            >
-                {isFriend ? (
-                    <PersonRemoveOutlined sx={{ color: primaryDark }} />
-                ) : (
-                    <PersonAddOutlined sx={{ color: primaryDark }} />
-                )}
-            </IconButton>
+            {_id !== friendId && (
+                <IconButton
+                    onClick={() => patchFriend()}
+                    sx={{ backgroundColor: primaryLight, p: "0.6rem" }}
+                >
+                    {isFriend ? (
+                        <PersonRemoveOutlined sx={{ color: primaryDark }} />
+                    ) : (
+                        <PersonAddOutlined sx={{ color: primaryDark }} />
+                    )}
+                </IconButton>
+            )}
+
         </FlexBetween>
     );
 };

@@ -1,6 +1,5 @@
 import {
     ManageAccountsOutlined,
-    EditOutlined,
     LocationOnOutlined,
     WorkOutlineOutlined,
 } from "@mui/icons-material";
@@ -43,8 +42,6 @@ const UserWidget = ({ userId, picturePath }) => {
         lastName,
         location,
         occupation,
-        viewedProfile,
-        impressions,
         friends,
     } = user;
 
@@ -92,10 +89,10 @@ const UserWidget = ({ userId, picturePath }) => {
                 </Box>
             </Box>
 
-            <Divider />
+            {/* <Divider /> */}
 
             {/* THIRD ROW */}
-            <Box p="1rem 0">
+            {/* <Box p="1rem 0">
                 <FlexBetween mb="0.5rem">
                     <Typography color={medium}>Who's viewed your profile</Typography>
                     <Typography color={main} fontWeight="500">
@@ -112,7 +109,7 @@ const UserWidget = ({ userId, picturePath }) => {
 
             <Divider />
 
-            {/* FOURTH ROW */}
+             FOURTH ROW 
             <Box p="1rem 0">
                 <Typography fontSize="1rem" color={main} fontWeight="500" mb="1rem">
                     Social Profiles
@@ -143,7 +140,7 @@ const UserWidget = ({ userId, picturePath }) => {
                     </FlexBetween>
                     <EditOutlined sx={{ color: main }} />
                 </FlexBetween>
-            </Box>
+            </Box> */}
         </WidgetWrapper>
     );
 };

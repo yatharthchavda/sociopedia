@@ -1,11 +1,7 @@
 import {
     EditOutlined,
     DeleteOutlined,
-    AttachFileOutlined,
-    GifBoxOutlined,
-    ImageOutlined,
-    MicOutlined,
-    MoreHorizOutlined,
+    ImageOutlined
 } from "@mui/icons-material";
 import {
     Box,
@@ -14,8 +10,7 @@ import {
     InputBase,
     useTheme,
     Button,
-    IconButton,
-    useMediaQuery,
+    IconButton
 } from "@mui/material";
 import FlexBetween from "components/FlexBetween";
 import Dropzone from "react-dropzone";
@@ -34,7 +29,6 @@ const MyPostWidget = ({ picturePath }) => {
     const token = useSelector((state) => state.token);
 
     const { palette } = useTheme();
-    const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
     const mediumMain = palette.neutral.mediumMain;
     const medium = palette.neutral.medium;
     const posts = useSelector((state) => state.posts);
@@ -54,7 +48,7 @@ const MyPostWidget = ({ picturePath }) => {
             body: formData,
         });
         const newPost = await response.json();
-        dispatch(setPosts({ posts: [...posts, newPost] }));        
+        dispatch(setPosts({ posts: [...posts, newPost] }));
         setImage(null);
         setPost("");
         setIsImage(false);
@@ -124,17 +118,20 @@ const MyPostWidget = ({ picturePath }) => {
             <Divider sx={{ margin: "1.25rem 0" }} />
 
             <FlexBetween>
-                <FlexBetween gap="0.25rem" onClick={() => setIsImage(!isImage)}>
-                    <ImageOutlined sx={{ color: mediumMain }} />
-                    <Typography
-                        color={mediumMain}
-                        sx={{ "&:hover": { cursor: "pointer", color: medium } }}
-                    >
-                        Image
-                    </Typography>
-                </FlexBetween>
+                <Box display="flex" justifyContent="center" width="100%">
+                    <FlexBetween onClick={() => setIsImage(!isImage)} gap="0.25rem">
+                        <ImageOutlined sx={{ color: mediumMain }} />
+                        <Typography
+                            color={mediumMain}
+                            sx={{ "&:hover": { cursor: "pointer", color: medium } }}
+                        >
+                            Image
+                        </Typography>
+                    </FlexBetween>
+                </Box>
 
-                {isNonMobileScreens ? (
+
+                {/* {isNonMobileScreens ? (
                     <>
                         <FlexBetween gap="0.25rem">
                             <GifBoxOutlined sx={{ color: mediumMain }} />
@@ -155,7 +152,7 @@ const MyPostWidget = ({ picturePath }) => {
                     <FlexBetween gap="0.25rem">
                         <MoreHorizOutlined sx={{ color: mediumMain }} />
                     </FlexBetween>
-                )}
+                )} */}
 
                 <Button
                     disabled={!post}
