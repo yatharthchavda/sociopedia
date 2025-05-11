@@ -19,10 +19,9 @@ import Post from './models/Post.js';
 import { users, posts } from './data/index.js';
 
 // configs
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 dotenv.config();
 const app = express();
+const __dirname = path.resolve();
 
 const allowedOrigins = [
     `http://localhost:3000`,
@@ -70,6 +69,15 @@ app.post("/posts", verifyToken, upload.single("picture"), createPost);
 app.use('/auth', authRoutes);
 app.use("/users", userRoutes);
 app.use("/posts", postRoutes);
+
+// Serve static assets if in production
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../client/build")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../client/build/index.html"));
+  });
+}
 
 // mongoose setup
 const PORT = process.env.PORT || 6001;
