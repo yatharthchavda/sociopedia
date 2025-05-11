@@ -9,7 +9,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
     const token = useSelector((state) => state.token);
 
     const getPosts = async () => {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/posts`, {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/posts`, {
             method: "GET",
             headers: { Authorization: `Bearer ${token}` },
         });
@@ -18,7 +18,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
     };
 
     const getUserPosts = async () => {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/posts/${userId}/posts`, {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/posts/${userId}/posts`, {
             method: "GET",
             headers: { Authorization: `Bearer ${token}` },
         });
