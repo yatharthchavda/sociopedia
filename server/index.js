@@ -71,13 +71,12 @@ app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);
 
 // Serve static assets if in production
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../client/build")));
+  app.use(express.static(path.join(__dirname, "/client/build")));
 
   app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../client/build/index.html"));
+    res.sendFile(path.join(__dirname, "/client/build/index.html"));
   });
-}
+
 
 // Global error handling middleware
 app.use((err, req, res, next) => {
